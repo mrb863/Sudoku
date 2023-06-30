@@ -135,14 +135,14 @@ void writeSudoku(vector<vector<char>>& board,char* filePath){
 
 
 int main(int argc, char* argv[]) {
-    //setbuf(stdout, NULL);
     if(argc < 2){
         cout<<"too few arguments\n";
         return -1;
     }
 
     if(strncmp(argv[1],"-c",2) == 0){
-        int num = atoi(argv[2]);
+        char *ptr;
+        int num = strtol(argv[2],&ptr,10);
         if(num<=0||num>=1000000){
             cout<<"invalid number\n";
             return -1;
@@ -165,7 +165,8 @@ int main(int argc, char* argv[]) {
         printSudoku(board);
     }
     else if(strncmp(argv[1],"-n",2) == 0){
-        int num = atoi(argv[2]);
+        char *ptr;
+        int num = strtol(argv[2],&ptr,10);
         if(num<=0||num>10000){
             cout<<"invalid number\n";
             return -1;
@@ -173,7 +174,7 @@ int main(int argc, char* argv[]) {
         int empty = 25;
         if(argc > 4){
             if(strncmp(argv[3],"-m",2) == 0){
-                int difficulty = atoi(argv[4]);
+                int difficulty = strtol(argv[4],&ptr,10);
                 if(difficulty<=0||difficulty>3){
                     cout<<"invalid number\n";
                     return -1;
@@ -186,7 +187,7 @@ int main(int argc, char* argv[]) {
                     empty = 40;
             }
             else if(strncmp(argv[3],"-r",2) == 0){
-                int emptyNum = atoi(argv[4]);
+                int emptyNum= strtol(argv[4],&ptr,10);
                 if(emptyNum<=0||emptyNum>3){
                     cout<<"invalid number\n";
                     return -1;
